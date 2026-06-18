@@ -220,7 +220,7 @@
   /* footer */
   footer{border-top:2px solid var(--ink);margin-top:40px;background:var(--paper-2)}
   footer .wrap{padding-block:48px}
-  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  footer .grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px}
   footer h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;font-weight:600}
   footer p{font-size:15px;color:var(--ink-soft)}
   footer .sig{font-family:var(--font-hand);font-size:30px;color:var(--ink);font-weight:700;transform:rotate(-2deg)}
@@ -1138,18 +1138,6 @@
     <h3 style="margin-top:34px">If this were going to beta next</h3>
     <p>I&rsquo;d pressure-test the unhappy paths the happy path hides — failed routes, partial fills, slippage on thin pairs — and design the honest, recoverable version of each. I&rsquo;d add an opt-in power mode for users who genuinely want manual chain and gas control. And I&rsquo;d treat every number on this page as a hypothesis to confirm with real instrumentation, not a trophy.</p>
   </div>
-
-  <div class="wrap" style="margin-top:30px">
-    <div class="framer-note">
-      <h4>Taking this into Framer</h4>
-      <ol>
-        <li>Every artifact downloads as a true <b>vector SVG</b> — drag the file straight onto a Framer canvas and it stays crisp at any scale, editable as paths.</li>
-        <li>The page is one <b>self-contained HTML file</b>: drop it into a Framer <em>Embed / HTML</em> component, or rebuild section-by-section — the structure maps cleanly to Framer stacks.</li>
-        <li>A <b>PNG @3&times;</b> export sits beside every SVG for decks and tools that don&rsquo;t accept vectors.</li>
-        <li>Type is <b>Bricolage Grotesque</b>, <b>Spline Sans</b> and <b>Caveat</b> — all on Google Fonts, so they map 1:1 to Framer&rsquo;s font picker.</li>
-      </ol>
-    </div>
-  </div>
 </section>
 </main>
 
@@ -1158,12 +1146,8 @@
     <div class="grid">
       <div>
         <h5>About this study</h5>
-        <p>A hypothetical product design case study exploring how Okto could evolve from a power-user wallet into a chain-abstracted, one-tap experience. Independent concept work &mdash; not affiliated with, commissioned by, or endorsed by Okto or CoinDCX.</p>
+        <p>A product design case study exploring how Okto could evolve from a power-user wallet into a chain-abstracted, one-tap experience. Independent concept work.</p>
         <p class="sig">&mdash; drawn &amp; written end to end</p>
-      </div>
-      <div>
-        <h5>Artifacts &mdash; all downloadable</h5>
-        <p class="small">Eight hand-drawn diagrams and six lo-fi screens. Each one exports as a vector <b>SVG</b> and a high-res <b>PNG&nbsp;@3&times;</b> from the buttons on every figure.</p>
       </div>
       <div>
         <h5>Method &amp; honesty</h5>
@@ -1210,95 +1194,6 @@
   }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.reveal, svg.sketch').forEach(function(el){ obs.observe(el); });
 
-  /* ---- font embedding for crisp PNG export ---- */
-  var fontCssPromise=null;
-  function getFontCss(){
-    if(fontCssPromise) return fontCssPromise;
-    fontCssPromise = (async function(){
-      try{
-        var families=[
-          'https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap'
-        ];
-        var out='';
-        for(var u of families){
-          var css=await (await fetch(u,{headers:{'Accept':'text/css'}})).text();
-          var faces=css.match(/@font-face\{[^}]+\}/g)||[];
-          for(var f of faces){
-            var m=f.match(/url\(([^)]+)\)/);
-            if(!m) continue;
-            var url=m[1].replace(/['"]/g,'');
-            var buf=await (await fetch(url)).arrayBuffer();
-            var b64=arrayBufferToBase64(buf);
-            out+=f.replace(/url\([^)]+\)/, "url(data:font/woff2;base64,"+b64+") format('woff2')")+'\n';
-          }
-        }
-        return out;
-      }catch(err){ return ""; }
-    })();
-    return fontCssPromise;
-  }
-  function arrayBufferToBase64(buf){
-    var bytes=new Uint8Array(buf), bin='';
-    for(var i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
-    return btoa(bin);
-  }
-
-  function serialize(svg, fontCss){
-    var clone=svg.cloneNode(true);
-    clone.classList.remove('sketch');
-    clone.removeAttribute('style');
-    if(!clone.getAttribute('xmlns')) clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
-    var vb=(svg.getAttribute('viewBox')||'').split(/\s+/);
-    if(vb.length===4){ clone.setAttribute('width',vb[2]); clone.setAttribute('height',vb[3]); }
-    var style=document.createElementNS('http://www.w3.org/2000/svg','style');
-    style.textContent=(fontCss||"@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');")+
-      "\ntext{font-family:'Caveat',cursive}";
-    clone.insertBefore(style, clone.firstChild);
-    return '<?xml version="1.0" encoding="UTF-8"?>\n'+new XMLSerializer().serializeToString(clone);
-  }
-
-  function download(name, blob){
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a'); a.href=url; a.download=name;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function(){URL.revokeObjectURL(url);},1500);
-  }
-
-  async function dlSVG(svg, name){
-    var css=await getFontCss();
-    download(name+'.svg', new Blob([serialize(svg,css)],{type:'image/svg+xml'}));
-  }
-
-  async function dlPNG(svg, name, scale){
-    scale=scale||3;
-    var css=await getFontCss();
-    var str=serialize(svg,css);
-    var vb=(svg.getAttribute('viewBox')||'0 0 1000 1000').split(/\s+/);
-    var w=parseFloat(vb[2]), h=parseFloat(vb[3]);
-    var img=new Image();
-    img.crossOrigin='anonymous';
-    var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(str);
-    await new Promise(function(res,rej){ img.onload=res; img.onerror=rej; img.src=svgUrl; });
-    var c=document.createElement('canvas'); c.width=Math.round(w*scale); c.height=Math.round(h*scale);
-    var ctx=c.getContext('2d'); ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,c.width,c.height);
-    ctx.drawImage(img,0,0,c.width,c.height);
-    c.toBlob(function(b){ download(name+'@'+scale+'x.png', b); },'image/png');
-  }
-
-  /* ---- inject download controls into each figure caption ---- */
-  document.querySelectorAll('.fig').forEach(function(fig){
-    var svg=fig.querySelector('svg.sketch'); if(!svg) return;
-    var cap=fig.querySelector('.fig__cap'); if(!cap) return;
-    var name=(fig.getAttribute('data-name')||'okto-artifact');
-    var box=document.createElement('div'); box.className='dl';
-    var ico='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>';
-    var bS=document.createElement('button'); bS.innerHTML=ico+'SVG'; bS.title='Download scalable vector (highest quality)';
-    var bP=document.createElement('button'); bP.innerHTML=ico+'PNG'; bP.title='Download high-res PNG (3×)';
-    bS.addEventListener('click',function(){ bS.disabled=true; dlSVG(svg,name).finally(function(){bS.disabled=false;}); });
-    bP.addEventListener('click',function(){ bP.disabled=true; var t=bP.innerHTML; bP.innerHTML=ico+'…'; dlPNG(svg,name,3).finally(function(){bP.disabled=false;bP.innerHTML=t;}); });
-    box.appendChild(bS); box.appendChild(bP);
-    cap.appendChild(box);
-  });
 })();
 </script>
 </body>
