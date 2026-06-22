@@ -168,6 +168,135 @@
   .card .n{font-family:var(--font-hand);font-size:30px;font-weight:700;color:var(--accent);line-height:1;display:block;margin-bottom:6px}
   .card h4{font-family:var(--font-disp);font-weight:700;font-size:18.5px;margin:0 0 6px;letter-spacing:-.01em}
   .card p{font-size:15.5px;margin:0;color:var(--ink-soft)}
+  /* ── Testimonials ───────────────────────────────────────── */
+.testimonials {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.testimonials .t-eyebrow {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.testimonials h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin: 0;
+}
+.testimonials .t-sub {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.dc-wrap {
+  display: grid;
+  grid-template-areas: 'stack';
+  place-items: center;
+  height: 280px;
+}
+.dc {
+  grid-area: stack;
+  position: relative;
+  width: 22rem;
+  height: 9rem;
+  border-radius: var(--r);
+  border: 2px solid var(--line);
+  background: var(--paper-2);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: skewY(-8deg);
+  transition: transform 0.5s ease, border-color 0.4s ease, filter 0.4s ease, background 0.4s ease;
+  cursor: default;
+  user-select: none;
+}
+.dc::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: -5%;
+  height: 110%;
+  width: 16rem;
+  background: linear-gradient(to left, var(--paper), transparent);
+  pointer-events: none;
+  border-radius: var(--r);
+}
+.dc:nth-child(1) {
+  filter: grayscale(100%);
+}
+.dc:nth-child(1):hover {
+  filter: grayscale(0%);
+  transform: skewY(-8deg) translateY(-40px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc:nth-child(2) {
+  filter: grayscale(100%);
+  transform: skewY(-8deg) translate(56px, 36px);
+}
+.dc:nth-child(2):hover {
+  filter: grayscale(0%);
+  transform: skewY(-8deg) translate(56px, -4px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc:nth-child(3) {
+  transform: skewY(-8deg) translate(112px, 72px);
+}
+.dc:nth-child(3):hover {
+  transform: skewY(-8deg) translate(112px, 36px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dc-icon {
+  display: inline-flex;
+  padding: 5px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  flex-shrink: 0;
+}
+.dc-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dc-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.dc-quote {
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.dc-meta {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
 
   /* callout */
   .callout{
@@ -709,6 +838,52 @@
 <!-- ===================== REFRAME / NORTH STAR ===================== -->
 <section class="sec">
   <div class="wrap col">
+    <!-- ── Testimonials ─────────────────────────────────────── -->
+<section class="sec testimonials">
+  <span class="t-eyebrow">in their own words</span>
+  <h2>What changed for users</h2>
+  <p class="t-sub">Not excitement. Just the absence of confusion.</p>
+
+  <div class="dc-wrap">
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Zap / surprise -->
+          <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        <span class="dc-title">"Wait… that's it?"</span>
+      </div>
+      <p class="dc-quote">"I don't need to install MetaMask first?"</p>
+      <p class="dc-meta">Curious Investor · First onboarding session</p>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Timer / effortless -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <span class="dc-title">"I'm already inside."</span>
+      </div>
+      <p class="dc-quote">"I was in the app before I realised my wallet was ready."</p>
+      <p class="dc-meta">Curious Investor · Wallet creation flow</p>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Shield / relief -->
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <span class="dc-title">"No fear this time."</span>
+      </div>
+      <p class="dc-quote">"I wasn't scared I'd lose some secret phrase and lock myself out."</p>
+      <p class="dc-meta">Curious Investor · Post-session reflection</p>
+    </div>
+
+  </div>
+</section>
     <span class="eyebrow">the turn</span>
     <p class="kicker">05 — The reframe</p>
     <h2>If the plumbing is the problem, hide the plumbing.</h2>
