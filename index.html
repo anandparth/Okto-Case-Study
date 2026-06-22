@@ -203,6 +203,7 @@
   grid-template-areas: 'stack';
   place-items: center;
   height: 560px;
+  width: min(960px, calc(100vw - 48px));
 }
 .dc {
   grid-area: stack;
@@ -377,6 +378,34 @@
     footer .grid{grid-template-columns:1fr;gap:24px}
     .top nav{display:none}
     .fig__cap{flex-direction:column}
+    /* testimonial deck — tablet scale-down */
+    .dc-wrap{height:400px}
+    .dc{width:min(80vw,28rem);height:16rem;padding:22px 26px}
+    .dc::after{width:16rem}
+    .dc:nth-child(2){transform:skewY(-8deg) translate(44px,44px)}
+    .dc:nth-child(2):hover{transform:skewY(-8deg) translate(44px,-4px)}
+    .dc:nth-child(3){transform:skewY(-8deg) translate(88px,88px)}
+    .dc:nth-child(3):hover{transform:skewY(-8deg) translate(88px,44px)}
+    .dc-quote{font-size:1.4rem}
+  }
+  @media(max-width:600px){
+    /* testimonial deck → flat vertical list on mobile */
+    .testimonials{padding:24px 0 28px}
+    .dc-wrap{
+      display:flex;flex-direction:column;
+      height:auto;gap:14px;
+      width:100%;padding-inline:16px;
+    }
+    .dc{
+      width:100%;height:auto;min-height:10rem;
+      padding:20px 22px;
+      transform:none !important;
+      filter:grayscale(0%) !important;
+    }
+    .dc::after{display:none}
+    .dc-quote{font-size:1.3rem}
+    .dc-title{font-size:1.1rem}
+    .dc-meta{font-size:0.8rem}
   }
   @media(max-width:460px){
     .metrics{grid-template-columns:1fr}
