@@ -837,6 +837,52 @@
 <!-- ===================== REFRAME / NORTH STAR ===================== -->
 <section class="sec">
   <div class="wrap col">
+<!-- ── Testimonials ─────────────────────────────────────── -->
+<section class="sec testimonials">
+  <span class="t-eyebrow">in their own words</span>
+  <h2>What changed for users</h2>
+  <p class="t-sub">Not excitement. Just the absence of confusion.</p>
+
+  <div class="dc-wrap">
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Zap / surprise -->
+          <svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </span>
+        <span class="dc-title">"Wait… that's it?"</span>
+      </div>
+      <p class="dc-quote">"I don't need to install MetaMask first?"</p>
+      <p class="dc-meta">Curious Investor · First onboarding session</p>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Timer / effortless -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </span>
+        <span class="dc-title">"I'm already inside."</span>
+      </div>
+      <p class="dc-quote">"I was in the app before I realised my wallet was ready."</p>
+      <p class="dc-meta">Curious Investor · Wallet creation flow</p>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top">
+        <span class="dc-icon">
+          <!-- Shield / relief -->
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        <span class="dc-title">"No fear this time."</span>
+      </div>
+      <p class="dc-quote">"I wasn't scared I'd lose some secret phrase and lock myself out."</p>
+      <p class="dc-meta">Curious Investor · Post-session reflection</p>
+    </div>
+
+  </div>
+</section>
     <span class="eyebrow">the turn</span>
     <p class="kicker">05 — The reframe</p>
     <h2>If the plumbing is the problem, hide the plumbing.</h2>
