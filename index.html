@@ -170,11 +170,11 @@
   .card p{font-size:15.5px;margin:0;color:var(--ink-soft)}
   /* ── Testimonials ───────────────────────────────────────── */
 .testimonials {
-  padding: 80px 0;
+  padding: 32px 0 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 10px;
 }
 .testimonials .t-eyebrow {
   font-family: "Spline Sans Mono", monospace;
@@ -196,23 +196,23 @@
   font-size: 1.15rem;
   color: var(--muted);
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 .dc-wrap {
   display: grid;
   grid-template-areas: 'stack';
   place-items: center;
-  height: 280px;
+  height: 560px;
 }
 .dc {
   grid-area: stack;
   position: relative;
-  width: 22rem;
-  height: 9rem;
+  width: 40rem;
+  height: 19rem;
   border-radius: var(--r);
   border: 2px solid var(--line);
   background: var(--paper-2);
-  padding: 14px 18px;
+  padding: 30px 38px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -227,7 +227,7 @@
   right: -4px;
   top: -5%;
   height: 110%;
-  width: 16rem;
+  width: 26rem;
   background: linear-gradient(to left, var(--paper), transparent);
   pointer-events: none;
   border-radius: var(--r);
@@ -237,43 +237,43 @@
 }
 .dc:nth-child(1):hover {
   filter: grayscale(0%);
-  transform: skewY(-8deg) translateY(-40px);
+  transform: skewY(-8deg) translateY(-60px);
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 .dc:nth-child(2) {
   filter: grayscale(100%);
-  transform: skewY(-8deg) translate(56px, 36px);
+  transform: skewY(-8deg) translate(72px, 56px);
 }
 .dc:nth-child(2):hover {
   filter: grayscale(0%);
-  transform: skewY(-8deg) translate(56px, -4px);
+  transform: skewY(-8deg) translate(72px, -4px);
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 .dc:nth-child(3) {
-  transform: skewY(-8deg) translate(112px, 72px);
+  transform: skewY(-8deg) translate(144px, 112px);
 }
 .dc:nth-child(3):hover {
-  transform: skewY(-8deg) translate(112px, 36px);
+  transform: skewY(-8deg) translate(144px, 52px);
   border-color: var(--accent);
   background: var(--accent-soft);
 }
 .dc-top {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 .dc-icon {
   display: inline-flex;
-  padding: 5px;
+  padding: 7px;
   border-radius: 999px;
   background: var(--accent-soft);
   flex-shrink: 0;
 }
 .dc-icon svg {
-  width: 15px;
-  height: 15px;
+  width: 22px;
+  height: 22px;
   stroke: var(--accent);
   fill: none;
   stroke-width: 2;
@@ -282,19 +282,19 @@
 }
 .dc-title {
   font-family: "Bricolage Grotesque", sans-serif;
-  font-size: 1rem;
+  font-size: 1.35rem;
   font-weight: 600;
   color: var(--accent);
 }
 .dc-quote {
   font-family: "Caveat", cursive;
-  font-size: 1.05rem;
+  font-size: 1.65rem;
   color: var(--ink-soft);
-  line-height: 1.4;
+  line-height: 1.45;
 }
 .dc-meta {
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.72rem;
+  font-size: 0.88rem;
   color: var(--muted);
 }
 
