@@ -228,10 +228,12 @@
   right: -4px;
   top: -5%;
   height: 110%;
-  width: 26rem;
+  width: 8rem;
   background: linear-gradient(to left, var(--paper), transparent);
   pointer-events: none;
   border-radius: var(--r);
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 .dc:nth-child(1) {
   filter: grayscale(100%);
@@ -241,6 +243,11 @@
   transform: skewY(-8deg) translateY(-60px);
   border-color: var(--accent);
   background: var(--accent-soft);
+}
+.dc:nth-child(1):hover::after,
+.dc:nth-child(2):hover::after,
+.dc:nth-child(3):hover::after {
+  opacity: 0;
 }
 .dc:nth-child(2) {
   filter: grayscale(100%);
