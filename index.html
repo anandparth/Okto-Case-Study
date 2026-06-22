@@ -202,71 +202,69 @@
   display: grid;
   grid-template-areas: 'stack';
   place-items: center;
-  height: 560px;
+  height: 640px;
   width: min(960px, calc(100vw - 48px));
 }
 .dc {
   grid-area: stack;
   position: relative;
-  width: 40rem;
-  height: 19rem;
+  width: 38rem;
+  height: 18rem;
   border-radius: var(--r);
   border: 2px solid var(--line);
   background: var(--paper-2);
-  padding: 30px 38px;
+  padding: 28px 34px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform: skewY(-8deg);
-  transition: transform 0.5s ease, border-color 0.4s ease, filter 0.4s ease, background 0.4s ease;
+  transition: transform 0.5s cubic-bezier(.22,.68,0,1.2), border-color 0.4s ease, filter 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
   cursor: default;
   user-select: none;
+  z-index: 0;
 }
+/* subtle right-edge fade so stacked cards peek naturally */
 .dc::after {
   content: '';
   position: absolute;
-  right: -4px;
-  top: -5%;
-  height: 110%;
-  width: 8rem;
+  right: -4px; top: -5%;
+  height: 110%; width: 7rem;
   background: linear-gradient(to left, var(--paper), transparent);
   pointer-events: none;
   border-radius: var(--r);
-  opacity: 1;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
 }
-.dc:nth-child(1) {
-  filter: grayscale(100%);
-}
+.dc:nth-child(1) { filter: grayscale(100%); }
+.dc:nth-child(2) { filter: grayscale(100%); transform: skewY(-8deg) translate(68px, 52px); }
+.dc:nth-child(3) { transform: skewY(-8deg) translate(136px, 104px); }
+
+/* on hover: bring card to front, lift above the stack, clear the overlay */
 .dc:nth-child(1):hover {
   filter: grayscale(0%);
-  transform: skewY(-8deg) translateY(-60px);
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
-.dc:nth-child(1):hover::after,
-.dc:nth-child(2):hover::after,
-.dc:nth-child(3):hover::after {
-  opacity: 0;
-}
-.dc:nth-child(2) {
-  filter: grayscale(100%);
-  transform: skewY(-8deg) translate(72px, 56px);
+  transform: skewY(-8deg) translateY(-160px);
+  border-color: var(--accent); background: var(--accent-soft);
+  box-shadow: 0 28px 56px rgba(91,61,245,.18);
+  z-index: 10;
 }
 .dc:nth-child(2):hover {
   filter: grayscale(0%);
-  transform: skewY(-8deg) translate(72px, -4px);
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
-.dc:nth-child(3) {
-  transform: skewY(-8deg) translate(144px, 112px);
+  transform: skewY(-8deg) translate(68px, -120px);
+  border-color: var(--accent); background: var(--accent-soft);
+  box-shadow: 0 28px 56px rgba(91,61,245,.18);
+  z-index: 10;
 }
 .dc:nth-child(3):hover {
-  transform: skewY(-8deg) translate(144px, 52px);
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  transform: skewY(-8deg) translate(136px, 30px);
+  border-color: var(--accent); background: var(--accent-soft);
+  box-shadow: 0 28px 56px rgba(91,61,245,.18);
+  z-index: 10;
 }
+.dc:hover::after { opacity: 0; }
+
+/* push the other cards DOWN when one is hovered, creating clear separation */
+.dc-wrap:has(.dc:nth-child(1):hover) .dc:nth-child(2) { transform: skewY(-8deg) translate(68px, 160px); }
+.dc-wrap:has(.dc:nth-child(1):hover) .dc:nth-child(3) { transform: skewY(-8deg) translate(136px, 220px); }
+.dc-wrap:has(.dc:nth-child(2):hover) .dc:nth-child(3) { transform: skewY(-8deg) translate(136px, 220px); }
 .dc-top {
   display: flex;
   align-items: center;
@@ -385,15 +383,12 @@
     footer .grid{grid-template-columns:1fr;gap:24px}
     .top nav{display:none}
     .fig__cap{flex-direction:column}
-    /* testimonial deck — tablet scale-down */
-    .dc-wrap{height:400px}
-    .dc{width:min(80vw,28rem);height:16rem;padding:22px 26px}
-    .dc::after{width:16rem}
+    /* testimonial deck — tablet */
+    .dc-wrap{height:480px}
+    .dc{width:min(80vw,26rem);height:16rem;padding:22px 26px}
     .dc:nth-child(2){transform:skewY(-8deg) translate(44px,44px)}
-    .dc:nth-child(2):hover{transform:skewY(-8deg) translate(44px,-4px)}
     .dc:nth-child(3){transform:skewY(-8deg) translate(88px,88px)}
-    .dc:nth-child(3):hover{transform:skewY(-8deg) translate(88px,44px)}
-    .dc-quote{font-size:1.4rem}
+    .dc-quote{font-size:1.35rem}
   }
   @media(max-width:600px){
     /* testimonial deck → flat vertical list on mobile */
@@ -401,7 +396,7 @@
     .dc-wrap{
       display:flex;flex-direction:column;
       height:auto;gap:14px;
-      width:100%;padding-inline:16px;
+      width:calc(100vw - 32px);padding:16px 0 8px;
     }
     .dc{
       width:100%;height:auto;min-height:10rem;
@@ -410,6 +405,13 @@
       filter:grayscale(0%) !important;
     }
     .dc::after{display:none}
+    .dc:nth-child(1):hover,.dc:nth-child(2):hover,.dc:nth-child(3):hover{
+      transform:translateY(-8px) !important;
+      box-shadow:0 12px 28px rgba(91,61,245,.14);
+    }
+    .dc-wrap:has(.dc:nth-child(1):hover) .dc:nth-child(2),
+    .dc-wrap:has(.dc:nth-child(1):hover) .dc:nth-child(3),
+    .dc-wrap:has(.dc:nth-child(2):hover) .dc:nth-child(3){ transform:none !important; }
     .dc-quote{font-size:1.3rem}
     .dc-title{font-size:1.1rem}
     .dc-meta{font-size:0.8rem}
