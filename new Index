@@ -168,7 +168,135 @@
   .card .n{font-family:var(--font-hand);font-size:30px;font-weight:700;color:var(--accent);line-height:1;display:block;margin-bottom:6px}
   .card h4{font-family:var(--font-disp);font-weight:700;font-size:18.5px;margin:0 0 6px;letter-spacing:-.01em}
   .card p{font-size:15.5px;margin:0;color:var(--ink-soft)}
-
+/* ── Testimonials ───────────────────────────────────────── */
+.testimonials {
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.testimonials .t-eyebrow {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.testimonials h2 {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  margin: 0;
+}
+.testimonials .t-sub {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 32px;
+}
+.dc-wrap {
+  display: grid;
+  grid-template-areas: 'stack';
+  place-items: center;
+  height: 280px;
+}
+.dc {
+  grid-area: stack;
+  position: relative;
+  width: 22rem;
+  height: 9rem;
+  border-radius: var(--r);
+  border: 2px solid var(--line);
+  background: var(--paper-2);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: skewY(-8deg);
+  transition: transform 0.5s ease, border-color 0.4s ease, filter 0.4s ease, background 0.4s ease;
+  cursor: default;
+  user-select: none;
+}
+.dc::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: -5%;
+  height: 110%;
+  width: 16rem;
+  background: linear-gradient(to left, var(--paper), transparent);
+  pointer-events: none;
+  border-radius: var(--r);
+}
+.dc:nth-child(1) {
+  filter: grayscale(100%);
+}
+.dc:nth-child(1):hover {
+  filter: grayscale(0%);
+  transform: skewY(-8deg) translateY(-40px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc:nth-child(2) {
+  filter: grayscale(100%);
+  transform: skewY(-8deg) translate(56px, 36px);
+}
+.dc:nth-child(2):hover {
+  filter: grayscale(0%);
+  transform: skewY(-8deg) translate(56px, -4px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc:nth-child(3) {
+  transform: skewY(-8deg) translate(112px, 72px);
+}
+.dc:nth-child(3):hover {
+  transform: skewY(-8deg) translate(112px, 36px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dc-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dc-icon {
+  display: inline-flex;
+  padding: 5px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  flex-shrink: 0;
+}
+.dc-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dc-title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+.dc-quote {
+  font-family: "Caveat", cursive;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+.dc-meta {
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
   /* callout */
   .callout{
     border:2px dashed var(--ink);border-radius:14px;background:var(--paper-2);
