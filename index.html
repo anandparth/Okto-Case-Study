@@ -583,6 +583,44 @@
     </div>
   </div>
 </section>
+<!-- ===================== VISUAL SUMMARY ===================== -->
+<style>
+  .fig--summary{max-width:1240px}
+  .vs-zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;position:relative;border-radius:4px;font:inherit}
+  .fig--summary img{display:block;width:100%;height:auto;border-radius:4px}
+  .vs-hint{position:absolute;right:12px;bottom:12px;font-family:var(--font-mono);font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#fff;background:var(--ink);padding:6px 11px;border-radius:8px;opacity:.55;transition:opacity .15s ease;pointer-events:none}
+  .vs-zoom:hover .vs-hint,.vs-zoom:focus-visible .vs-hint{opacity:.92}
+  .vs-lb{position:fixed;inset:0;z-index:100000;background:rgba(20,19,14,.9);display:none;align-items:center;justify-content:center;padding:22px;cursor:zoom-out}
+  .vs-lb.open{display:flex}
+  .vs-lb img{max-width:min(1535px,97vw);max-height:94vh;width:auto;height:auto;border-radius:6px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+  .vs-lb__close{position:fixed;top:16px;right:20px;font:600 26px/1 var(--font-body);color:#fff;background:none;border:0;cursor:pointer;padding:8px;line-height:1}
+  @media print{.vs-hint{display:none}}
+</style>
+<section class="sec sec--tight" id="visual-summary">
+  <div class="wrap col">
+    <span class="eyebrow">the whole story, one board</span>
+    <p class="kicker">Visual summary</p>
+    <h2>The entire case study, at a glance.</h2>
+    <p>Every stage of the work &mdash; research and synthesis, the UX audit, personas, information architecture, flows, the lo-fi system and the shipped outcomes &mdash; laid out as a single overview board.</p>
+  </div>
+  <div class="wrap">
+    <figure class="fig fig--summary" data-name="okto-visual-summary">
+      <div class="fig__frame">
+        <button type="button" class="vs-zoom" aria-label="Enlarge the Okto visual summary board">
+          <img src="./assets/okto-visual-summary.png" width="1535" height="1024" loading="lazy" decoding="async"
+               alt="A twenty-panel overview board of the Okto case study: executive summary, research synthesis, UX audit of the current website, user personas, jobs to be done, information architecture, developer onboarding user flow, hero and wireframe explorations, design principles and design system, hi-fi dashboard and documentation screens, use cases, pricing page, a before-and-after comparison, and an impact summary.">
+          <span class="vs-hint">&#8599; click to enlarge</span>
+        </button>
+      </div>
+      <figcaption class="fig__cap">
+        <div class="t">
+          <p class="lbl">Visual summary &middot; full process</p>
+          <p class="d">One board covering the project end to end &mdash; from the before / after reframe through research, IA, core flows, the lo-fi system and the shipped impact numbers.</p>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 <!-- ===================== PROBLEM ===================== -->
 <section class="sec" id="problem">
   <div class="wrap col">
@@ -1434,6 +1472,26 @@
       history.back();
     }
   });
+</script>
+
+<!-- ============ Visual-summary lightbox ============ -->
+<div class="vs-lb" id="vs-lb" role="dialog" aria-modal="true" aria-label="Okto visual summary, enlarged">
+  <button type="button" class="vs-lb__close" id="vs-lb-close" aria-label="Close enlarged image">&times;</button>
+  <img src="./assets/okto-visual-summary.png" alt="Enlarged Okto visual summary board.">
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('vs-lb');
+  var opener = document.querySelector('.vs-zoom');
+  if(!lb || !opener) return;
+  var closeBtn = document.getElementById('vs-lb-close');
+  function open(){ lb.classList.add('open'); document.body.style.overflow='hidden'; closeBtn.focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; opener.focus(); }
+  opener.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('open')) close(); });
+})();
 </script>
 
 </body>
