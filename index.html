@@ -655,14 +655,14 @@
 
           <!-- emotion curve -->
           <g filter="url(#rough)" fill="none" stroke="#5B3DF5" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-            <path class="draw" d="M100 150 C170 150 180 175 240 175 C300 175 320 300 380 300 C440 300 470 250 520 250 C575 250 605 285 660 285 C720 285 745 330 800 330 C865 330 905 360 960 360"/>
+            <path class="draw" d="M100 150 C170 150 180 175 240 175 C300 175 320 314 380 314 C440 314 470 250 520 250 C575 250 605 320 660 320 C720 320 745 332 800 332 C865 332 905 344 960 344"/>
           </g>
-          <!-- nodes -->
+          <!-- nodes: every red node sits below the frustration line at y=300 -->
           <g filter="url(#rough2)" fill="#ffffff" stroke="#1b1b1f" stroke-width="2.4">
             <circle cx="100" cy="150" r="8"/><circle cx="240" cy="175" r="8"/>
-            <circle cx="380" cy="300" r="9" fill="url(#hr)"/><circle cx="520" cy="250" r="8"/>
-            <circle cx="660" cy="285" r="9" fill="url(#hr)"/><circle cx="800" cy="330" r="9" fill="url(#hr)"/>
-            <circle cx="960" cy="360" r="10" fill="url(#hr)"/>
+            <circle cx="380" cy="314" r="9" fill="url(#hr)"/><circle cx="520" cy="250" r="8"/>
+            <circle cx="660" cy="320" r="9" fill="url(#hr)"/><circle cx="800" cy="332" r="9" fill="url(#hr)"/>
+            <circle cx="960" cy="344" r="10" fill="url(#hr)"/>
           </g>
           <!-- stage labels -->
           <g font-family="Spline Sans Mono,monospace" font-size="11" fill="#403C32" text-anchor="middle">
@@ -1306,7 +1306,17 @@
   <div class="wrap">
     <div class="fig fig--full" data-name="okto-after-happy-path">
       <div class="fig__frame">
-        <svg class="sketch" viewBox="0 0 1080 260" role="img" aria-label="The redesigned happy path: log in, wallet ready, pick token, confirm with gas auto-paid, done — an emotion line that rises.">
+        <svg class="sketch" viewBox="0 0 1080 440" role="img" aria-label="The redesigned happy path drawn on the same axis as Fig. 01: log in, wallet ready, pick token, confirm with gas auto-paid, done — five steps, every one of them above the frustration line, trending up.">
+          <!-- same axis as Fig. 01 -->
+          <g filter="url(#rough2)" fill="none" stroke="#1b1b1f" stroke-width="2" stroke-linecap="round">
+            <line x1="70" y1="72" x2="70" y2="346" stroke-dasharray="2 7"/>
+            <circle cx="40" cy="92" r="15"/><path d="M33 96 q7 7 14 0"/>
+            <circle cx="40" cy="338" r="15"/><path d="M33 344 q7 -7 14 0"/>
+          </g>
+          <g fill="#74705F" font-family="Spline Sans Mono,monospace" font-size="10"><circle cx="36" cy="86" r="1.6" fill="#2f9e44"/><circle cx="44" cy="86" r="1.6" fill="#2f9e44"/><circle cx="36" cy="332" r="1.6" fill="#e03131"/><circle cx="44" cy="332" r="1.6" fill="#e03131"/></g>
+          <!-- frustration baseline, same y as Fig. 01 -->
+          <g fill="none" stroke="#e8590c" stroke-width="2.4" stroke-linecap="round"><line x1="92" y1="300" x2="1010" y2="300" stroke-dasharray="6 7"/></g>
+          <text x="998" y="293" text-anchor="end" font-family="Spline Sans Mono,monospace" font-size="10" letter-spacing="1.5" fill="#e8590c">FRUSTRATION&#160;LINE</text>
           <g filter="url(#rough)" fill="none" stroke="#2f9e44" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
             <path class="draw" d="M110 188 C220 178 240 162 330 160 C430 158 460 146 545 138 C645 128 680 118 760 110 C850 101 900 96 970 90"/>
           </g>
@@ -1315,13 +1325,13 @@
           </g>
           <g filter="url(#rough2)" fill="none" stroke="#2f9e44" stroke-width="3" stroke-linecap="round"><path d="M963 90 l5 6 l10 -12"/></g>
           <g font-family="Spline Sans Mono,monospace" font-size="11" fill="#403C32" text-anchor="middle">
-            <text x="110" y="222">Log in · Google</text>
-            <text x="330" y="222">Wallet ready</text>
-            <text x="545" y="222">Pick token</text>
-            <text x="760" y="222">Confirm · gas auto</text>
-            <text x="970" y="222" fill="#2f9e44">Done</text>
+            <text x="110" y="392">Log in · Google</text>
+            <text x="330" y="392">Wallet ready</text>
+            <text x="545" y="392">Pick token</text>
+            <text x="760" y="392">Confirm · gas auto</text>
+            <text x="970" y="392" fill="#2f9e44">Done</text>
           </g>
-          <text x="120" y="92" font-family="Caveat,cursive" font-weight="700" font-size="22" fill="#2f9e44">no cliffs this time &#8599;</text>
+          <text x="132" y="112" font-family="Caveat,cursive" font-weight="700" font-size="22" fill="#2f9e44">no cliffs this time &#8599;</text>
         </svg>
       </div>
       <div class="fig__cap"><div class="t"><p class="lbl">Fig. 06 · Emotional journey, after</p><p class="d">The same axis as Fig. 01, redrawn. Five steps, all above the line, trending up. Nothing here requires a tutorial.</p></div></div>
