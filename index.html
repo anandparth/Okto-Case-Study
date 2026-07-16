@@ -163,6 +163,16 @@
   .shots .fig--lead{grid-column:1 / -1}
   .shots img{display:block;width:100%;height:auto;border-radius:6px}
 
+  /* archived-evidence quote: the store listing, treated like a pinned exhibit */
+  .evidence{margin:0;padding:4px 6px}
+  .evidence p{margin:0 0 14px;font-size:16.5px;line-height:1.62;color:var(--ink)}
+  .evidence p:last-of-type{margin-bottom:18px}
+  .evidence mark{background:var(--hl);color:inherit;padding:0 3px;border-radius:2px}
+  .evidence cite{display:block;font-family:var(--font-mono);font-size:11.5px;font-style:normal;
+    letter-spacing:.04em;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+  .evidence cite a{color:var(--accent)}
+  @media(max-width:600px){ .evidence p{font-size:15px} }
+
   /* insight / sticky cards */
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:28px auto;max-width:900px}
   .card{
@@ -1345,16 +1355,35 @@
   <div class="wrap col">
     <span class="eyebrow">honest about the numbers</span>
     <p class="kicker">09 — Impact</p>
-    <h2>What this moved.</h2>
-    <p class="lead">The redesign shipped — that part isn&rsquo;t in question. The numbers are a different matter, so here&rsquo;s the honest scope: these are <strong>modelled</strong> from the onboarding funnel and comparable wallet benchmarks, not an audited read-out I owned. They are directional evidence that the reframe worked, not a trophy.</p>
+    <h2>The argument shipped. Here&rsquo;s the proof I can hand you.</h2>
+    <p class="lead">I left CoinDCX before there was an audited read-out to own, so I have no funnel numbers of my own — and I&rsquo;d rather show you nothing than a number I made up. What I can show is better than a number: <strong>the product went to market selling the exact decisions this case study argued for</strong>, in its own words.</p>
   </div>
+
+  <!-- The verifiable half: Okto's own store listing, archived from the era this shipped. -->
+  <div class="wrap">
+    <div class="fig" data-name="okto-store-evidence">
+      <div class="fig__frame">
+        <blockquote class="evidence">
+          <p><b>&ldquo;Simplified user interface:</b> Okto offers a simplified DeFi crypto wallet that <mark>removes the complexity associated with private key management</mark>.&rdquo;</p>
+          <p><b>&ldquo;Keyless experience:</b> Okto &hellip; leverages advanced Multi-Party Computation (MPC) to offer a keyless infrastructure <mark>without the need to manage seed phrases</mark>.&rdquo;</p>
+          <cite>Okto &mdash; Self-Custody Wallet, Google Play listing, captured 13 May 2023 &middot; <a href="https://web.archive.org/web/20230513175619/https://play.google.com/store/apps/details?id=com.coindcx.okto" rel="noopener">web.archive.org</a></cite>
+        </blockquote>
+      </div>
+      <div class="fig__cap"><div class="t"><p class="lbl">Fig. 07 · The receipt</p><p class="d">The north star of this project was <em>&ldquo;hide the chain, kill the seed phrase&rdquo;</em>. A year on, that is the top of the product&rsquo;s own pitch — not a designer&rsquo;s retrospective claim, but the marketing copy CoinDCX shipped to acquire users. The argument won.</p></div></div>
+    </div>
+  </div>
+
   <div class="wrap">
     <div class="metrics">
+      <div class="metric"><div class="v">0</div><div class="k"><b>Verifiable</b> &middot; <b>seed phrases</b> to write down — MPC keyshares replaced the ceremony outright</div></div>
+      <div class="metric"><div class="v">1,000<small>+</small></div><div class="k"><b>Verifiable</b> &middot; <b>tokens</b> swappable across Ethereum, Polygon and Solana behind one balance</div></div>
+      <div class="metric"><div class="v">150<small>+</small></div><div class="k"><b>Verifiable</b> &middot; <b>liquidity pools</b> reachable as &ldquo;earn&rdquo;, without naming a chain</div></div>
       <div class="metric"><div class="v">2.4&times;</div><div class="k"><b>Modelled</b> &middot; lift in <b>activation</b> — wallet created &rarr; first on-chain action (&approx;28% &rarr; &approx;68%)</div></div>
-      <div class="metric"><div class="v">&lt;2<small>min</small></div><div class="k"><b>Modelled</b> &middot; <b>time to first trade</b>, down from ~11 minutes of setup</div></div>
-      <div class="metric"><div class="v">+34<small>pts</small></div><div class="k"><b>Modelled</b> &middot; <b>onboarding completion</b> rate, end to end</div></div>
-      <div class="metric"><div class="v">&minus;60<small>%</small></div><div class="k"><b>Modelled</b> &middot; <b>support tickets</b> tagged &ldquo;gas&rdquo; or &ldquo;seed phrase&rdquo;</div></div>
     </div>
+  </div>
+
+  <div class="wrap col">
+    <p class="small" style="margin-top:18px">The remaining figures I used to argue this internally, all <b>modelled</b> from the onboarding funnel and comparable wallet benchmarks rather than measured: <b>&lt;2&nbsp;min</b> to first trade (down from ~11 minutes of setup), <b>+34&nbsp;pts</b> onboarding completion end to end, and <b>&minus;60%</b> of support tickets tagged &ldquo;gas&rdquo; or &ldquo;seed phrase&rdquo;. They are directional evidence that the reframe worked — things to test, not trophies.</p>
   </div>
   <div class="wrap">
     <div class="fig" data-name="okto-impact-activation">
@@ -1387,7 +1416,7 @@
           <g filter="url(#rough)" fill="none" stroke="#2f9e44" stroke-width="3.4" stroke-linecap="round"><path class="draw" d="M840 188 l0 78"/><path d="M840 266 l-9 -12 M840 266 l9 -12"/></g>
         </svg>
       </div>
-      <div class="fig__cap"><div class="t"><p class="lbl">Fig. 07 · Modelled outcome</p><p class="d">The headline hypothesis, and the reason the reframe was worth doing: removing the seed phrase, chain selection and gas wall roughly doubles the share of new users who reach a first action, and collapses setup time from minutes to seconds.</p></div></div>
+      <div class="fig__cap"><div class="t"><p class="lbl">Fig. 08 · Modelled outcome</p><p class="d">The headline hypothesis, and the reason the reframe was worth doing: removing the seed phrase, chain selection and gas wall roughly doubles the share of new users who reach a first action, and collapses setup time from minutes to seconds.</p></div></div>
     </div>
   </div>
 </section>
@@ -1397,8 +1426,8 @@
   <div class="wrap col">
     <span class="eyebrow">the shipped thing</span>
     <p class="kicker">10 — Final designs</p>
-    <h2>What actually shipped.</h2>
-    <p>Everything above is the argument for hiding the plumbing. These are the screens that came out the other side — no seed phrase, no gas token, no chain picker anywhere in sight.</p>
+    <h2>Where the thinking ended up.</h2>
+    <p>Everything above is the argument for hiding the plumbing. These are Okto&rsquo;s screens as they stand now — and being straight with you about them matters: the product has moved on since my work, onto HyperEVM and a dApp-first surface I didn&rsquo;t design. <strong>Treat these as the argument&rsquo;s afterlife, not my deliverables.</strong> What survived is the principle: still no seed phrase, still no gas token to fetch, still no chain picker anywhere in sight.</p>
   </div>
   <div class="wrap">
     <div class="shots">
