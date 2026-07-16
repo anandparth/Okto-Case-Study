@@ -157,6 +157,12 @@
   .screen .fig__cap{margin-top:11px}
   .screen .fig__frame::before{width:84px;height:22px;top:-11px}
 
+  /* final-design mockup grid */
+  .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin:30px auto 0;max-width:1060px}
+  .shots .fig{margin:0;max-width:none}
+  .shots .fig--lead{grid-column:1 / -1}
+  .shots img{display:block;width:100%;height:auto;border-radius:6px}
+
   /* insight / sticky cards */
   .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:28px auto;max-width:900px}
   .card{
@@ -376,6 +382,7 @@
   @media(max-width:880px){
     body{font-size:17px}
     .screens{grid-template-columns:1fr;max-width:380px}
+    .shots{grid-template-columns:1fr}
     .cards{grid-template-columns:1fr;max-width:480px}
     .princ{grid-template-columns:1fr;max-width:480px}
     .metrics{grid-template-columns:repeat(2,1fr);max-width:520px}
@@ -643,7 +650,7 @@
           </g>
           <g fill="#74705F" font-family="Spline Sans Mono,monospace" font-size="10"><circle cx="36" cy="86" r="1.6" fill="#2f9e44"/><circle cx="44" cy="86" r="1.6" fill="#2f9e44"/><circle cx="36" cy="332" r="1.6" fill="#e03131"/><circle cx="44" cy="332" r="1.6" fill="#e03131"/></g>
           <!-- frustration baseline -->
-          <g filter="url(#rough2)" fill="none" stroke="#e8590c" stroke-width="1.8"><line x1="92" y1="300" x2="1010" y2="300" stroke-dasharray="3 8"/></g>
+          <g fill="none" stroke="#e8590c" stroke-width="2.4" stroke-linecap="round"><line x1="92" y1="300" x2="1010" y2="300" stroke-dasharray="6 7"/></g>
           <text x="998" y="293" text-anchor="end" font-family="Spline Sans Mono,monospace" font-size="10" letter-spacing="1.5" fill="#e8590c">FRUSTRATION&#160;LINE</text>
 
           <!-- emotion curve -->
@@ -985,7 +992,7 @@
         <svg class="sketch" viewBox="0 0 1080 470" role="img" aria-label="Information architecture comparison: a deep gated tree before, a flat intent-based tree after.">
           <text x="270" y="38" font-family="Spline Sans Mono,monospace" font-size="12" letter-spacing="1.5" fill="#e03131" text-anchor="middle">BEFORE — DEEP, BRANCHING, GATED</text>
           <text x="790" y="38" font-family="Spline Sans Mono,monospace" font-size="12" letter-spacing="1.5" fill="#2f9e44" text-anchor="middle">AFTER — FLAT, INTENT-BASED</text>
-          <g filter="url(#rough2)" fill="none" stroke="#1b1b1f" stroke-width="2" stroke-dasharray="2 9"><line x1="540" y1="56" x2="540" y2="450"/></g>
+          <g fill="none" stroke="#1b1b1f" stroke-width="2" stroke-dasharray="3 8" stroke-linecap="round"><line x1="540" y1="56" x2="540" y2="450"/></g>
 
           <!-- LEFT TREE -->
           <g filter="url(#rough)" fill="none" stroke="#1b1b1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -1344,7 +1351,7 @@
       <div class="fig__frame">
         <svg class="sketch" viewBox="0 0 1000 380" role="img" aria-label="A bar comparison showing first-action activation rising from about 28 percent to about 68 percent, a 2.4 times lift.">
           <text x="60" y="48" font-family="Spline Sans Mono,monospace" font-size="12" letter-spacing="1.5" fill="#74705F">FIRST-ACTION ACTIVATION · SHIPPED</text>
-          <g filter="url(#rough2)" fill="none" stroke="#1b1b1f" stroke-width="2.4" stroke-linecap="round"><line x1="70" y1="320" x2="640" y2="320"/></g>
+          <g fill="none" stroke="#1b1b1f" stroke-width="2.4" stroke-linecap="round"><line x1="70" y1="320" x2="640" y2="320"/></g>
           <g filter="url(#rough)" stroke="#1b1b1f" stroke-width="2.4" stroke-linejoin="round">
             <rect x="170" y="244" width="120" height="76" fill="url(#hr)"/>
             <rect x="430" y="120" width="120" height="200" fill="url(#hg)"/>
@@ -1360,7 +1367,7 @@
             <text x="372" y="92" font-size="30" fill="#5B3DF5">2.4&times;</text>
           </g>
           <!-- time-to-first-trade mini -->
-          <g filter="url(#rough2)" fill="none" stroke="#1b1b1f" stroke-width="2" stroke-dasharray="2 8"><line x1="700" y1="70" x2="700" y2="330"/></g>
+          <g fill="none" stroke="#1b1b1f" stroke-width="2" stroke-dasharray="3 8" stroke-linecap="round"><line x1="700" y1="70" x2="700" y2="330"/></g>
           <text x="730" y="100" font-family="Spline Sans Mono,monospace" font-size="11" letter-spacing="1" fill="#74705F">TIME TO FIRST TRADE</text>
           <g font-family="Caveat,cursive" font-weight="700" text-anchor="middle">
             <text x="840" y="170" font-size="30" fill="#e03131">~11 min</text>
@@ -1374,11 +1381,47 @@
   </div>
 </section>
 
+<!-- ===================== FINAL DESIGNS ===================== -->
+<section class="sec" id="final">
+  <div class="wrap col">
+    <span class="eyebrow">the shipped thing</span>
+    <p class="kicker">10 — Final designs</p>
+    <h2>What actually shipped.</h2>
+    <p>Everything above is the argument for hiding the plumbing. These are the screens that came out the other side — no seed phrase, no gas token, no chain picker anywhere in sight.</p>
+  </div>
+  <div class="wrap">
+    <div class="shots">
+
+      <figure class="fig fig--lead" data-name="okto-final-homepage">
+        <div class="fig__frame">
+          <img src="./assets/okto-final-homepage.jpg" alt="The Okto dApp explorer on a phone: a Featured dApps row with Liminal and Hyperpie, an Okto exclusive rewards badge, and a community-sourced strategies carousel." width="1800" height="1350" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="fig__cap"><div class="t"><p class="lbl">Final · dApp explorer</p><p class="d">The home surface after the reframe. dApps are presented by <em>what they do for you</em> — yield, staking, points — and community strategies are packaged as a few tapped steps rather than a sequence of chain-level operations.</p></div></figcaption>
+      </figure>
+
+      <figure class="fig" data-name="okto-final-landing">
+        <div class="fig__frame">
+          <img src="./assets/okto-final-landing.jpg" alt="The Okto app launch screen, dark teal, with the app mark centred and a 'Built with love on Hyperliquid' lockup at the bottom." width="1800" height="1350" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="fig__cap"><div class="t"><p class="lbl">Final · Launch screen</p><p class="d">The first thing a new user sees. No key ceremony, no warnings to accept — the wallet is already being created behind this screen.</p></div></figcaption>
+      </figure>
+
+      <figure class="fig" data-name="okto-final-profile-share">
+        <div class="fig__frame">
+          <img src="./assets/okto-final-profile-share.jpg" alt="The Okto referral sheet: earn 5% commission in USDC, with referral and earnings totals and a Share Link button." width="1800" height="1350" loading="lazy" decoding="async">
+        </div>
+        <figcaption class="fig__cap"><div class="t"><p class="lbl">Final · Referral share</p><p class="d">Rewards stated in a unit people already understand — a USDC percentage and a rupee-simple total — instead of a token emission schedule.</p></div></figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
 <!-- ===================== REFLECTION ===================== -->
 <section class="sec">
   <div class="wrap col">
     <span class="eyebrow">what stuck with me</span>
-    <p class="kicker">10 — Reflection</p>
+    <p class="kicker">11 — Reflection</p>
     <h2>What I&rsquo;d carry into the next one.</h2>
     <ul class="clean">
       <li><b>Abstraction is a design decision, not just an engineering one.</b> The hardest, highest-leverage calls in this project were about what to <em>hide</em> — and earning the trust to hide it.</li>
